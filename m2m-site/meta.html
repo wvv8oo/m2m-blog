@@ -37,9 +37,23 @@
     <div class="content container">
         <div class="post">
             <h1>如何使用meta</h1>
-            <span class="post-date">2016-06-11 14:53:55 +0800</span>
+            <span class="post-date">2016-06-11 20:13:11 +0800</span>
 
-            <p><code>包裹起来，每行一个，采用</code>key: value`的方式书写，注意meta一定要顶行开始写。</p>
+            
+<h2 id="meta">什么要使用meta</h2>
+
+<p>通常markdown只包含文章的主体部分，但实际上，一篇文章或者邮件，还会包含其它内容，如作者、排序、tag、发布日期等，某些时候我们可能还需要自定义标题与url。对于markdown这种非结构化的内容来说，我们需要增加一些结构化的内容来保存这些内容，而meta就是为了解决这个问题的。</p>
+
+<h2 id="meta-1">如何定义meta</h2>
+
+<p>你只需要在markdown的第一行加入如下内容即可：</p>
+
+<p><!--
+  title: 这里是自定义的meta
+  subject: 这是另一个meta
+  --></p>
+
+<p>meta被<code>&lt;!-- --&gt;</code>包裹起来，每行一个，采用<code>key: value</code>的方式书写，注意meta一定要顶行开始写。</p>
 
 <h3 id="m2mmeta">m2m已定义的meta</h3>
 
@@ -58,7 +72,7 @@
   <li><code>tag</code>：文章的tag，多个tag用英文逗号<code>,</code>分隔</li>
 </ul>
 
-<h2 id="meta">使用自己的meta</h2>
+<h2 id="meta-2">使用自己的meta</h2>
 
 <p>如果你使用自定义theme，可以增加更多的meta，自己在theme中使用<code>{{meta.your_key}}</code>就可以使用了。</p>
 
