@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> head}}
+    <title>{{article.meta.title}} - {{site.title}}</title>
+</head>
+
+<body>
+
+<div class="container">
+    {{> header}}
+
+    <div class="content container">
+        <div class="post">
+            <h1>{{article.meta.title}}</h1>
+            <span class="post-date">{{article.meta.publish_date}}</span>
+
+            {{{article.body_html}}}
+        </div>
+    </div>
+</div>
+
+{{> footer}}
+</body>
+</html>

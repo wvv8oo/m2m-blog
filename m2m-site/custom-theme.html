@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/justified-nav.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS">    <title>如何使用自己的主题 - M2M官方网站</title>
+</head>
+
+<body>
+
+<div class="container">
+    <a href="https://github.com/kiteam/kiteam" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    
+    <div class="masthead">
+      <div class="custom-logo">
+        M2M
+      </div>
+      <nav>
+        <ul class="nav nav-justified">
+          <li><a href="/index.html">主页</a></li>
+          <li><a href="/install.html">如何安装</a></li>
+          <li><a href="/markdown-to-site.html">生成网站</a></li>
+          <li><a href="/markdown-to-mail.html">发送邮件</a></li>
+          <li><a href="/custom-theme.html">自定义模板</a></li>
+          <li><a href="/config.html">高级配置</a></li>
+          <li><a href="http://github.com/wvv8oo/m2m" target="_blank">获取源码</a></li>
+          <li><a href="https://github.com/wvv8oo/m2m/issues" target="_blank">问题与建议</a></li>
+          <li><a href="/about.html">关于M2M</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content container">
+        <div class="post">
+            <h1>如何使用自己的主题</h1>
+            <span class="post-date">2016-06-11 19:48:57 +0800</span>
+
+            
+<p>首先，默认的主题会有太多人不喜欢，不管换成什么样的主题，也会有很多人不喜欢。</p>
+
+<h2 id="section">如何使用我自己的主题</h2>
+
+<p>非常简单，你只需要在工作目录下，执行如下命令：</p>
+
+<p>m2m init –theme</p>
+
+<p>然后<code>M2M</code>将会在你的工作目录下，创建一个名为<code>m2m-theme</code>的文件夹，并复制默认的主题到此目录下，你可以根据自己的需求进行改造。</p>
+
+<p>主题文件是基于<code>mustache</code>的模板，关于<code>mustache</code>的语法，请参考<a href="http://mustache.github.io/">mustache官方网站</a>。CSS要求是原生的CSS，目前还不支持sass或者是less，以后会考虑支持。</p>
+
+<h2 id="section-1">主题文件</h2>
+
+<p>根据默认主题，我们来介绍一下目录结构以及文件的功能。</p>
+
+<h3 id="section-2">根目录</h3>
+
+<ul>
+  <li><code>static</code>：静态文件目录，推荐将css和js放入此文件，但并不是必需的，只要你的引用路径正确，都是没有关系的。</li>
+  <li><code>template</code>：模板目录，必需存在</li>
+</ul>
+
+<h3 id="template">template目录</h3>
+
+<ul>
+  <li><code>partials</code>：子模板的目录，必需存在，比如说可以把header/footer等放入此目录，子模板的命名不作要求，只需要你自己能引用得到即可</li>
+  <li><code>article.mustache</code>：单个文章</li>
+  <li><code>home.mustache</code>：主页</li>
+  <li><code>index.mustache</code>：索引页，这个和home可能会搞混，首页只有一个，而索引页可能有多页</li>
+  <li><code>mail.mustache</code>：邮件的模板，你可以在此定义一些邮件的样式</li>
+  <li><code>page.mustache</code>：计划用于page的，不过目前没有用，可以忽略</li>
+</ul>
+
+<p><code>partials</code>下是可以自由定的，不再做介绍。</p>
+
+<h2 id="section-3">模板数据</h2>
+
+<h3 id="site">site</h3>
+
+<p>即<code>m2m.config</code>文件中<code>site</code>节点的数据，除邮件模板外，这个数据一直存在的。数据结构与<code>site</code>定义的完全一样，所以你可以在<code>site</code>节点中定义一些你自己的数据。</p>
+
+<h3 id="article">article</h3>
+
+<p>文章的数据，在<code>article.mustache</code>和<code>mail.mustache</code>模板会拥有此数据。数据结构如下：</p>
+
+<ul>
+  <li><code>file</code>：完整的文件路径</li>
+  <li><code>relative_path_md5</code>：相对路径的md5值</li>
+  <li><code>mtime</code>：文件修改时间</li>
+  <li><code>original</code>：原始的markdown文件内容，包含<code>meta</code></li>
+  <li><code>relative_path</code>：相对路径</li>
+  <li><code>relative_url</code>：相对url，即把<code>.md</code>扩展名改为<code>.html</code></li>
+  <li><code>title</code>：文章的标题，优先取<code>meta</code>，如果没有则会取文件名</li>
+  <li><code>publish_date</code>：文章的发布时间，优先取<code>meta</code>，如果没有则会取<code>mtime</code></li>
+  <li><code>body_markdown</code>：不包含<code>meta</code>内容的markdown</li>
+  <li><code>body_html</code>：<code>body_markdown</code>转换为HTML的内容，并不是完全的HTML页</li>
+  <li><code>excerpt</code>：摘要，取100个字符</li>
+  <li><code>toc_html</code>：TOC生成的HTML</li>
+  <li><code>meta</code>：Markdown中的meta部分，已经格式为key/value对应的内容，可以用<code>meta.title</code>的方式引用</li>
+</ul>
+
+<h3 id="articles">articles</h3>
+
+<p>文章列表的数据，在<code>index.mustache</code>和<code>index.mustache</code>模板会拥有此数据。<code>articles</code>是一个数组，每一项都是一个完整的<code>article</code>，请参考<code>article</code>的数据格式。</p>
+
+<p>参考如下：</p>
+
+<pre><code>&lt;div class="posts"&gt;
+    {{#articles}}
+        &lt;div class="post"&gt;
+            &lt;h1&gt;&lt;a href="{{root/relative_path}}{{relative_url}}"&gt;{{meta.title}}&lt;/a&gt;&lt;/h1&gt;
+            &lt;span class="post-date"&gt;{{meta.publish_date}}&lt;/span&gt;
+            &lt;p&gt;{{excerpt}}&amp;hellip;&lt;/p&gt;
+        &lt;/div&gt;
+    {{/articles}}
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="nav">nav</h3>
+
+<p>导航，用于列表显示上一页或下一页，参考如下：</p>
+
+<pre><code>&lt;div class="pagination"&gt;
+    {{#nav.previous}}
+        &lt;a class="previous" href="{{nav.previous}}"&gt;&amp;larr; 上一页&lt;/a&gt;
+    {{/nav.previous}}
+
+    {{#nav.next}}
+        &lt;a class="next" href="{{nav.next}}"&gt;下一页 &amp;rarr;&lt;/a&gt;
+    {{/nav.next}}
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="m2m">m2m</h3>
+
+<p>m2m产品相关的信息，如下：</p>
+
+<ul>
+  <li><code>name</code>：产品名称</li>
+  <li><code>version</code>：版本</li>
+  <li><code>homepage</code>：主页</li>
+  <li><code>repos</code>：仓库地址</li>
+</ul>
+
+<h3 id="rootrelativepath">root/relative_path</h3>
+
+<p>这个很重要，相对链接地址，特别是对于有多级目录的网站来说，模板中的链接一定要加上这个，如：</p>
+
+<pre><code>&lt;a href="{{root/relative_path}}{{relative_url}}"&gt;{{meta.title}}&lt;/a&gt;
+</code></pre>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="custom-social">
+        <ul>
+            <li>&copy; wvv8oo.com 2016</li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+            </li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<link href="./highlight/github.css" rel="stylesheet">
+<script src="./highlight/highlight.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

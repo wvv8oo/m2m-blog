@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/justified-nav.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS">    <title>关于M2M的配置文件 - M2M官方网站</title>
+</head>
+
+<body>
+
+<div class="container">
+    <a href="https://github.com/kiteam/kiteam" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    
+    <div class="masthead">
+      <div class="custom-logo">
+        M2M
+      </div>
+      <nav>
+        <ul class="nav nav-justified">
+          <li><a href="/index.html">主页</a></li>
+          <li><a href="/install.html">如何安装</a></li>
+          <li><a href="/markdown-to-site.html">生成网站</a></li>
+          <li><a href="/markdown-to-mail.html">发送邮件</a></li>
+          <li><a href="/custom-theme.html">自定义模板</a></li>
+          <li><a href="/config.html">高级配置</a></li>
+          <li><a href="http://github.com/wvv8oo/m2m" target="_blank">获取源码</a></li>
+          <li><a href="https://github.com/wvv8oo/m2m/issues" target="_blank">问题与建议</a></li>
+          <li><a href="/about.html">关于M2M</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content container">
+        <div class="post">
+            <h1>关于M2M的配置文件</h1>
+            <span class="post-date">2016-06-11 19:56:36 +0800</span>
+
+            
+<p>在阅读此文之前，我相信你已经阅读过<a href="./markdown-to-mail.html">如何将Markdown生成html格式的邮件并发送</a>和<a href="./markdown-to-site.html">如果将Markdown生成一个网站</a>两篇文件。</p>
+
+<p>M2M提供更丰富的配置方式，在此之前，我们先了解一下配置文件是如何工作的吧。</p>
+
+<h2 id="section">配置文件是如何工作的</h2>
+
+<p><code>M2M</code>的配置文件分为两个部分，分别是全局配置与本地配置，全局配置在<code>~/.m2m/m2m.config</code>，而本地配置则在你的工作目录下，同样的，文件名也是<code>m2m.config</code>。</p>
+
+<p>当你使用<code>m2m</code>的时候，它会把你的全局配置与本地配置全并，当然，本地配置的优先级别更高，也就是说，你可以用本地的配置文件去覆盖全局的配置，也可以在全局配置中定义一些常用的配置。</p>
+
+<p>一个通用的优先级是：命令行(如果允许) &gt; 文件中指定(如果允许) &gt; 本地配置 &gt; 全局配置</p>
+
+<h2 id="section-1">配置文件的格式</h2>
+
+<p><code>M2M</code>的配置文件是基于<code>YAML</code>格式的，虽然我十分想用<code>JSON</code>格式，但考虑到ruby社区的习惯，我决定还是使用<code>YAML</code>格式的配置文件了。其实还有一个比较重要的一点是，JSON文件格式不支持注释。</p>
+
+<p>如果你不了解<code>YAML</code>格式，没关系，你可以使用<a href="http://www.json2yaml.com/">json2yaml</a>这个网站进行转换，也可使用<a href="http://yamltojson.com/">yamltojson</a>进行反向转换。</p>
+
+<h2 id="section-2">详细配置</h2>
+
+<p>这是一份完整的配置，我在配置中加了注释，就不一一展开了。</p>
+
+<pre><code>---
+#网站相关的配置
+site:
+  #网站的标题
+  title: M2B官方博客
+  #网站的主机地址
+  host: http://m2b.wvv8oo.com/
+  #分页时每页的大小，如果没有设置，默认按每页10条进行分页
+  page_size: 10
+#markdown文件内容的路径，如果没有配置，会在工作目录查找
+content: "./content"
+#生成的目录，如果没有配置，则会生成到m2m-site这个目录
+target: "./site"
+#邮件配置，这个配置一般是在全局的m2m.config文件，工作目录如果有需要，也可以覆盖
+mail:
+  #SMTP服务器地址
+  smtp_server: smtp.example.com
+  #SMTP的端口号
+  port: 465
+  #你的邮箱帐号
+  username: mail@example.com
+  #发件人
+  from: 张三 &lt;mail@example.com&gt;
+  #默认主题
+  subject: 周报 张三 $last_week - $now
+  #格式化标题中的日期
+  format: '%Y/%m/%d'
+  #加密过后的密码，这个仅限于M2M写入
+  password: |
+    hAZ+LfAAey22P/Xh1PPiIA==
+  #默认的收件人
+  to: 007@example.com,peter@example.com
+  #是否启用SSL，启用为y，不启用为n
+  ssl: n
+  #安全性配置，这个不要更改，在你设置密码的时候会自动配置
+  safer: false
+</code></pre>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="custom-social">
+        <ul>
+            <li>&copy; wvv8oo.com 2016</li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+            </li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<link href="./highlight/github.css" rel="stylesheet">
+<script src="./highlight/highlight.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

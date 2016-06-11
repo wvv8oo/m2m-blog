@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/justified-nav.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS">    <title> - M2M官方网站</title>
+</head>
+
+<body>
+
+<div class="container">
+    <a href="https://github.com/kiteam/kiteam" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    
+    <div class="masthead">
+      <div class="custom-logo">
+        m2m.wvv8oo.org
+      </div>
+      <nav>
+        <ul class="nav nav-justified">
+          <li><a href="/">主页</a></li>
+          <li><a href="/install.html">如何安装</a></li>
+          <li><a href="/markdown-to-site.html">生成网站</a></li>
+          <li><a href="/markdown-to-mail.html">发送邮件</a></li>
+          <li><a href="/custom-theme.html">自定义模板</a></li>
+          <li><a href="/config.html">高级配置</a></li>
+          <li><a href="http://github.com/wvv8oo/m2m" target="_blank">获取源码</a></li>
+          <li><a href="https://github.com/wvv8oo/m2m/issues" target="_blank">问题与建议</a></li>
+          <li><a href="/about.html">关于M2M</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content container">
+        <div class="post">
+            <h1></h1>
+            <span class="post-date">2016-06-11 14:42:55 +0800</span>
+          
+            
+<h2 id="section">邮件基本配置</h2>
+
+<p>在使用之前，你需要配置一下SMTP和发件人的信息，别担心，这一切非常简单，因为<code>m2m</code>提供了向导式配置，你只需要在终端键入如下命令：</p>
+
+<p>m2m setup –mail</p>
+
+<p>然后按照提示一步一步输入即可，是不是超级简单呢</p>
+
+<h3 id="section-1">邮件配置详解</h3>
+
+<ul>
+  <li><code>SMTP服务器地址</code>：请到你的邮件提供商查看帮助或者百度，例如126是<code>smtp.126.com</code>，163的是<code>smtp.163.com</code></li>
+  <li><code>SMTP端口</code>：一般是465或者25，也有用587的，自行百度或者查看邮件提供商的帮助</li>
+  <li><code>邮件帐号</code>：用来发邮件的帐号</li>
+  <li><code>发件人</code>：这个和邮件帐号一般是一致的，不同的是，你可能需要在发件人加上自己的名字。例如我的邮件件号是<code>mail@example.com</code>，而的姓名是<code>张全蛋</code>，那么可以将发件人设置为<code>张全蛋 &lt;mail@example.com&gt;</code>。注意姓名和<code>&lt;</code>之间的空格，否则会导致邮件发送不成功。当然这项你也可以不填，直接回车就可以了，不填和邮件帐号就是一样的了。</li>
+  <li><code>默认邮件主题</code>：如果你也像我一样要写周报，那么这项功能对你很有用，比如说你的默认主题可以设置为<code>周报-张三 $last_week - $now</code>，<code>$last_week</code>和<code>$now</code>两个变量分别表示上周同期和当天。邮件主题还可以在markdown邮件中指定，也可以发邮件的时候指定，完全不用担心现在设置以后改不了。</li>
+  <li><code>默认收件人</code>：某些邮件的收件人一般是固定的，比如说周报，默认收件人可以让你解脱这个烦恼，多个收件人请用逗号<code>,</code>隔开。收件人也可以在发邮件的时候指定，或者是在markdown文件中指定的。</li>
+  <li><code>是否使用SSL</code>：参考邮件提供商的帮助或者百度，一般<code>465</code>和<code>587</code>的端口都是需要启用<code>ssl</code>的，启用请输入<code>y</code>，否则输入<code>n</code>即可</li>
+  <li><code>邮箱密码</code>：你的邮箱密码，你的密码以加密的方式保存在你的电脑上，安全方面请不要担心</li>
+  <li><code>加密钥匙</code>：用你的钥匙加密你的密码，这是一种更安全的方式，但带来的问题是每次你发邮件都要输入这个钥匙，可能会比较麻烦，但安全与方便总是冲突的，对吧</li>
+</ul>
+
+<h2 id="section-2">发送邮件</h2>
+
+<p>假定你已经写了一个markdown文件需要发送，你只需要在终端切换到该文件的在的目录，键入<code>m2m mail</code>即可将最近修改的markdown以邮件的方式发送出去。</p>
+
+<p><code>m2m mail</code>提供几个参数，如下：</p>
+
+<ul>
+  <li><code>-s</code>或<code>--subject</code>：指定邮件主题，命令行参数指定的邮件主题优先级最高</li>
+  <li><code>-a</code>或<code>--addressee</code>：指定收件人，多个收件人请用英文的逗号<code>,</code>隔开</li>
+  <li><code>--silent</code>：静默发送，如果没有提供此参数，则会要求你确认才发送，这是为了避免手抖将邮件发给了不该发的人</li>
+  <li><code>-m</code>或<code>--markdown</code>：指定要发送的markdown文件，可以是相对路径，也可以是绝对路径</li>
+</ul>
+
+<h2 id="section-3">邮件主题</h2>
+
+<p>有三个地方可以设置邮件主题，并且越在后面的优先级越高：</p>
+
+<ol>
+  <li>全局配置，即你使用<code>m2m setup --mail</code>时设置的默认主题</li>
+  <li>markdown文件的meta值 ，关于meta请参考<a href="./meta.html">Markdown中的meta</a></li>
+  <li>发邮件时提供的参数，如<code>m2m mail -s</code>或<code>m2m mail -subject</code></li>
+</ol>
+
+<p>邮件主题提供两个变量，分别是上周<code>$last_week</code>和当天<code>$now</code>，注意上周是针对当天来说的，也就是说今天向前推7天的时间。</p>
+
+<p>日期的格式默认是<code>%/Y%m/%d</code>，即<code>2016-06-11</code>这种格式，如果你要更改日期的格式，请到全局配置文件下修改，关于全局配置文件，请参考<a href="./config.html">配置文件</a>。</p>
+
+<h2 id="section-4">收件人</h2>
+
+<p>与邮件主题一样，你也可以在三个地方设置收件人，并且越在后面的优先级越高：</p>
+
+<ol>
+  <li>全局配置，即你使用<code>m2m setup --mail</code>时设置的默认收件人</li>
+  <li>markdown文件的meta值 ，关于meta请参考<a href="./meta.html">Markdown中的meta</a></li>
+  <li>发邮件时提供的参数，如<code>m2m mail -a</code>或<code>m2m mail --addressee</code></li>
+</ol>
+
+<h2 id="section-5">如何重置密码</h2>
+
+<p>使用<code>m2m setup --mail-password</code>即可重置密码，当然也可以使用<code>m2m setup --mail</code>，但这个命令会让你重新配置SMTP和发件人信息。</p>
+
+<h2 id="m2m">m2m提供的邮件功能有什么优势</h2>
+
+<ol>
+  <li>将markdown自动转换为html格式的邮件</li>
+  <li>如果markdown文件中有图片链接，会自动将图片贴到邮件中，可不是附件哦</li>
+  <li>免去常用邮件主题和收件人的麻烦</li>
+  <li>对于写周报的同学来说，你懂的</li>
+</ol>
+
+<h2 id="faqs">FAQS</h2>
+
+<p>Q: m2m会不会收集我的密码，安全吗</p>
+
+<p>不会啦，代码是开源的，请自行审查源码。你的密码以加必的方式保存在你的电脑上，如果你还不放心，可以使用钥匙进行加密，这个钥匙是不保存的。</p>
+
+<p>Q: 我需要用钥匙加密我的密码吗</p>
+
+<p>一般情况下，我觉得是不需要的，首先你的电脑应该是比较安全的，其实密码本身是经过加密的。设置了加密钥匙每次发邮件都要你输入，也挺烦人的。</p>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="custom-social">
+        <ul>
+            <li>&copy; wvv8oo.com 2016</li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+            </li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<link href="./highlight/github.css" rel="stylesheet">
+<script src="./highlight/highlight.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

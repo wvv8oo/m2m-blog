@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/justified-nav.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS">    <title> - M2M官方网站</title>
+</head>
+
+<body>
+
+<div class="container">
+    <a href="https://github.com/kiteam/kiteam" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    
+    <div class="masthead">
+      <div class="custom-logo">
+        m2m.wvv8oo.org
+      </div>
+      <nav>
+        <ul class="nav nav-justified">
+          <li><a href="/">主页</a></li>
+          <li><a href="/install.html">如何安装</a></li>
+          <li><a href="/markdown-to-site.html">生成网站</a></li>
+          <li><a href="/markdown-to-mail.html">发送邮件</a></li>
+          <li><a href="/custom-theme.html">自定义模板</a></li>
+          <li><a href="/config.html">高级配置</a></li>
+          <li><a href="http://github.com/wvv8oo/m2m" target="_blank">获取源码</a></li>
+          <li><a href="https://github.com/wvv8oo/m2m/issues" target="_blank">问题与建议</a></li>
+          <li><a href="/about.html">关于M2M</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content container">
+        <div class="post">
+            <h1></h1>
+            <span class="post-date">2016-06-11 12:39:54 +0800</span>
+          
+            
+<h2 id="section">一个故事</h2>
+
+<p>一个产品，照例要讲一个故事，然而我并不是一个很会讲故事的人，我将就着讲，看官您将就着着听。</p>
+
+<p>大概在2015年的时候，我说我要学会一门新语言，然后把2015年定为Ruby年。然后，如你所愿，除了看过前面几章后，我便将Ruby教程束之高阁了，大概看到了Mixin这一章了吧。幸运的是，2015年前后，我差不多写了一年CoffeeScript，至少他们的语法风格还是极像的。</p>
+
+<p>目前由于工作有关系，除了几个开源项目，我使用CoffeeScript的机会已经很少了。并且在未来，我会选择es6，而不是选择CoffeeScript这样的方言了。</p>
+
+<p>2016年，工作写周报用的是Markdown，各种文档也是Markdown，一些项目的的博客也是Markdown，所以想找一个将Markdown转成博客的工具。虽然说这种工具已经是汗牛充栋了，但我想起去年曾经说好要学会Ruby的呢，不如用Ruby来做一个这样的工具吧。</p>
+
+<p>作为一个面向API和Google编程的工程师，并且有CoffeeScript的开发经验的工程师，直接进入项目开发的学习效率要高得多，捧着一本入门经典从头读到尾从来不是我喜欢干的事。</p>
+
+<p>于是，便有了这个项目，前后拖了很多，基本上没时间搞，持续开发估计一个星期就可以了。这再一次证明我是一个到处挖坑不填的工程师，哦，是挖坑很久才填的工程师，这一次，我想我会填到我自己能用的程度。</p>
+
+<h2 id="section-1">名字的起源</h2>
+
+<blockquote>
+  <p>编程除了命名之外，其它的都不是问题，产品也一样</p>
+</blockquote>
+
+<blockquote>
+  <p>一个产品一定要有一个响亮的名字</p>
+</blockquote>
+
+<p>起名是个苦力活，变量命名只要优雅语义化就好，可是产品名称的要求就高得多了，起码有一条，名字要没有被人占用对吧，就这一条，会杀掉无数条创意命名的。</p>
+
+<p>最初想的名字是<code>roblog</code>，即<code>robot</code> + <code>blog</code>，自动生成博客嘛。后来觉得<code>m2b</code>也蛮不错，<code>Markdown To Blog</code>，简短又没被占用。</p>
+
+<p>写着写着发现一个需求，我每周写周报很麻烦，要把Markdown转换HTML，然后贴到<code>mail.app</code>，如果有图片，还要重新贴图。最麻烦的是，周报要在标题上写日期范围，每次写周报，我都要复制别人周报标题，然后把名字改成我的。所以，干脆写一个生成邮件并发送的功能好了。</p>
+
+<p>你看，就是这样，项目边界被扩大，此时此刻，你们能理解产品经理和老板了吧，幸好是个人项目，要不肯定要delay了。</p>
+
+<p>既然已经不只是<code>Markdown to Blog</code>了，还要<code>Markdown to Mail</code>和<code>Markdown to Site</code>，那干脆名字也改了吧，正好还没发布，直接改成<code>M2M</code>好了，<code>Markdown to More</code>，未来可能还会增加<code>Markdown to Docx</code>和<code>Markdown to PDF</code>的功能，这样的<code>More</code>才名副其实嘛。</p>
+
+<p>起名叫<code>m2m</code>的最大麻烦就是，无论你在哪个搜索引擎，搜索<code>m2m</code>前面N页永远不会出现这个产品。不过顺便提一句，m2m的歌我蛮喜欢的，包括但不限于<code>The Day You Went Away</code>，<code>Pretty Boy</code>，<code>Mirror Mirror</code>。</p>
+
+<h2 id="faq">FAQ</h2>
+
+<p>Q: 会维护下去吗？</p>
+
+<p>我想会的，看用户量了，反正你也不会有依赖，再说了，你可以自己改的对不对，我相信看官你一定是个程序员的</p>
+
+<p>Q: 如果我觉得不好用怎么办</p>
+
+<p>可以给我提issue，我看心情考虑是否改善，当然，你可以选择不用，谢谢</p>
+
+<p>Q: 我是个程序员，我也想参与到开发中来，我想提PR你说好唔好啊</p>
+
+<p>你问我资瓷不资瓷，我当然资瓷了，但是也要按基本法来，对不对。考虑到我是项目的Owner，我会根据情况确定是否合并你的代码，包括但不限于：</p>
+
+<ul>
+  <li>你的代码质量太烂</li>
+  <li>你要加的功能是不合理的，比如说要增加一个发射核弹的功能</li>
+  <li>你的代码写得太好了，让我感到很羞愧。如果是这样的话，我把项目送给你维护算了。</li>
+  <li>我心情不好(当然不太可能)</li>
+</ul>
+
+<p>Q: 会增加Markdown在线编辑和管理的功能</p>
+
+<p>你猜？满足以下条件之一就会有的：</p>
+
+<ol>
+  <li>用户量足够，比如说超过200个star</li>
+  <li>我自己想要这个功能了</li>
+</ol>
+
+<p>当然，最重要的条件就是——我要有时间!!!</p>
+
+<p>Q: 卧槽这功能太尼玛好用了，我想给开发者买杯咖啡怎么办</p>
+
+<p>作为一个无私奉献的人，我目前就不收任何费用了，即使是捐赠也不要，是不是很高尚，请注意是目前。</p>
+
+<p>如果你希望<code>m2m</code>功能越来越强大，越来越好用，多向你的朋友推荐它吧，这样我才会有动力去维护对不对。</p>
+
+<p>Q：还有什么想说的吗</p>
+
+<p>你都看到这里了，说明是真爱啊，快去star一下表示支持吧，star越多，功能越强，真的</p>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="custom-social">
+        <ul>
+            <li>&copy; wvv8oo.com 2016</li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+            </li>
+            <li>
+                <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=wvv8oo&amp;repo=m2m&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<link href="./highlight/github.css" rel="stylesheet">
+<script src="./highlight/highlight.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
