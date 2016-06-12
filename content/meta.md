@@ -10,10 +10,10 @@ title: 如何使用meta
 
 你只需要在markdown的第一行加入如下内容即可：
 
-  <!--
-  title: 这里是自定义的meta
-  subject: 这是另一个meta
-  -->
+    <!--
+    title: 这里是自定义的meta
+    subject: 这是另一个meta
+    -->
 
 meta被`<!-- -->`包裹起来，每行一个，采用`key: value`的方式书写，注意meta一定要顶行开始写。
 
