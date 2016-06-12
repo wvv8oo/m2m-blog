@@ -37,7 +37,7 @@
     <div class="content container">
         <div class="post">
             <h1>关于M2M的配置文件</h1>
-            <span class="post-date">2016-06-11 19:56:36 +0800</span>
+            <span class="post-date">2016-06-12 22:17:01 +0800</span>
 
             
 <p>在阅读此文之前，我相信你已经阅读过<a href="./markdown-to-mail.html">如何将Markdown生成html格式的邮件并发送</a>和<a href="./markdown-to-site.html">如果将Markdown生成一个网站</a>两篇文件。</p>
@@ -71,6 +71,8 @@ site:
   host: http://m2b.wvv8oo.com/
   #分页时每页的大小，如果没有设置，默认按每页10条进行分页
   page_size: 10
+  #生成网站后，执行的shell脚本
+  after_build_shell: "pwd"
 #markdown文件内容的路径，如果没有配置，会在工作目录查找
 content: "./content"
 #生成的目录，如果没有配置，则会生成到m2m-site这个目录

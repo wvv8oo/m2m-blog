@@ -34,6 +34,8 @@ M2M提供更丰富的配置方式，在此之前，我们先了解一下配置�
       host: http://m2b.wvv8oo.com/
       #分页时每页的大小，如果没有设置，默认按每页10条进行分页
       page_size: 10
+      #生成网站后，执行的shell脚本
+      after_build_shell: "pwd"
     #markdown文件内容的路径，如果没有配置，会在工作目录查找
     content: "./content"
     #生成的目录，如果没有配置，则会生成到m2m-site这个目录
