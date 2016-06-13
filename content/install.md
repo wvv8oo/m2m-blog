@@ -8,16 +8,9 @@ title: 如何安装M2M
 
 如果你是一个程序员，又是使用了`MacOSX`系统，谢天谢地，这会超级简单，你只需要在终端键入：
 
-    sudo gem install m2m
+    sudo gem install m2m --source http://mirrors.aliyun.com/rubygems/ -n /usr/local/bin
 
-如果安装时出现类似如下的错误：
-
-    ERROR:  While executing gem ... (Errno::EPERM)
-        Operation not permitted - /usr/bin/m2m
-
-则可以使用如下命令：
-
-    sudo gem install m2m -n /usr/local/bin
+请不要使用taobao的镜像，因为我之前发布了一个名字为M2M的，修正为小写之后，发现taobao居然同步不过来了，也就是说taobao的原还是之前的M2M，并且版本是0.1.x的。
 
 ### Windows系统
 

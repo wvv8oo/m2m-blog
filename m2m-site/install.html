@@ -37,7 +37,7 @@
     <div class="content container">
         <div class="post">
             <h1>如何安装M2M</h1>
-            <span class="post-date">2016-06-12 22:02:08 +0800</span>
+            <span class="post-date">2016-06-13 22:55:27 +0800</span>
 
             
 <h2 id="section">程序员</h2>
@@ -46,19 +46,10 @@
 
 <p>如果你是一个程序员，又是使用了<code>MacOSX</code>系统，谢天谢地，这会超级简单，你只需要在终端键入：</p>
 
-<pre><code>sudo gem install m2m
+<pre><code>sudo gem install m2m --source http://mirrors.aliyun.com/rubygems/ -n /usr/local/bin
 </code></pre>
 
-<p>如果安装时出现类似如下的错误：</p>
-
-<pre><code>ERROR:  While executing gem ... (Errno::EPERM)
-    Operation not permitted - /usr/bin/m2m
-</code></pre>
-
-<p>则可以使用如下命令：</p>
-
-<pre><code>sudo gem install m2m -n /usr/local/bin
-</code></pre>
+<p>请不要使用taobao的镜像，因为我之前发布了一个名字为M2M的，修正为小写之后，发现taobao居然同步不过来了，也就是说taobao的原还是之前的M2M，并且版本是0.1.x的。</p>
 
 <h3 id="windows">Windows系统</h3>
 

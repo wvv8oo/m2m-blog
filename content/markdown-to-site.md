@@ -1,5 +1,5 @@
 <!--
-title: 如果将Markdown生成一个网站
+title: 如何将Markdown生成一个网站
 -->
 
 ## 网站的基本配置
